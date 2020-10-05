@@ -2,7 +2,7 @@
   "name": "console-locale-timestamp",
   "version": "1.0.2",
   "description": "Provides a console debugging facilities with a timestamp. Timestamps are written using Date.prototype.toLocaleTimeString().",
-  "main": "ConsoleLocaleTimestamp.js",
+  "main": "ConsoleLocaleTimestamp.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
