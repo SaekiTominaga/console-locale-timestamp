@@ -1,6 +1,6 @@
 # Console Locale Timestamp
 
-[![npm version](https://badge.fury.io/js/%40saekitominaga%2Fconsole-locale-timestamp.svg)](https://badge.fury.io/js/%40saekitominaga%2Fconsole-locale-timestamp)
+[![npm version](https://badge.fury.io/js/console-locale-timestamp.svg)](https://badge.fury.io/js/console-locale-timestamp)
 
 Provides a console debugging facilities with a timestamp. Timestamps are written using `Date.prototype.toLocaleTimeString()`.
 
