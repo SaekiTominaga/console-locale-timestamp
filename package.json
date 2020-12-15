@@ -1,6 +1,6 @@
 {
 	"name": "console-locale-timestamp",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Provides a console debugging facilities with a timestamp. Timestamps are written using Date.prototype.toLocaleTimeString().",
 	"type": "module",
 	"devDependencies": {
