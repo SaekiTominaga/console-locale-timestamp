@@ -1,22 +1,37 @@
 {
-  "name": "console-locale-timestamp",
-  "version": "1.0.3",
-  "description": "Provides a console debugging facilities with a timestamp. Timestamps are written using Date.prototype.toLocaleTimeString().",
-  "main": "ConsoleLocaleTimestamp.mjs",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SaekiTominaga/console-locale-timestamp.git"
-  },
-  "keywords": [
-    "console"
-  ],
-  "author": "Saeki Tominaga",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SaekiTominaga/console-locale-timestamp/issues"
-  },
-  "homepage": "https://github.com/SaekiTominaga/console-locale-timestamp#readme"
+	"name": "console-locale-timestamp",
+	"version": "1.0.3",
+	"description": "Provides a console debugging facilities with a timestamp. Timestamps are written using Date.prototype.toLocaleTimeString().",
+	"type": "module",
+	"devDependencies": {
+		"@types/node": "^14.14.13",
+		"@typescript-eslint/eslint-plugin": "^4.10.0",
+		"@typescript-eslint/parser": "^4.10.0",
+		"eslint": "^7.15.0",
+		"eslint-config-prettier": "^7.0.0",
+		"eslint-plugin-jsdoc": "^30.7.8",
+		"npm-run-all": "^4.1.5",
+		"onchange": "^7.1.0",
+		"renamer": "^2.0.1",
+		"typescript": "^4.1.3"
+	},
+	"scripts": {
+		"_ts-watch:tsc": "tsc -d -w",
+		"_ts-watch:jsrename": "onchange -v *.mjs.js -- renamer --force --find .mjs.js --replace .mjs *",
+		"ts-watch": "run-p _ts-watch:*"
+	},
+	"main": "ConsoleLocaleTimestamp.mjs",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SaekiTominaga/console-locale-timestamp.git"
+	},
+	"bugs": {
+		"url": "https://github.com/SaekiTominaga/console-locale-timestamp/issues"
+	},
+	"homepage": "https://github.com/SaekiTominaga/console-locale-timestamp#readme",
+	"author": "Saeki Tominaga",
+	"license": "MIT",
+	"keywords": [
+		"console"
+	]
 }
