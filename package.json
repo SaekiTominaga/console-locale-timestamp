@@ -18,7 +18,7 @@
 	"main": "dist/ConsoleLocaleTimestamp.mjs",
 	"types": "dist/ConsoleLocaleTimestamp.mjs.d.ts",
 	"scripts": {
-		"_ts-watch:tsc": "tsc -d -w",
+		"_ts-watch:tsc": "tsc -w",
 		"_ts-watch:rename": "onchange -f add -v dist/**/*.mjs.js -- renamer --force --find .mjs.js --replace .mjs dist/**/*",
 		"ts-watch": "run-p _ts-watch:*"
 	},
