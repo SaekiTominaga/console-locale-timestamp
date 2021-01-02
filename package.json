@@ -4,23 +4,18 @@
 	"description": "Provides a console debugging facilities with a timestamp. Timestamps are written using Date.prototype.toLocaleTimeString().",
 	"type": "module",
 	"devDependencies": {
-		"@types/node": "^14.14.13",
-		"@typescript-eslint/eslint-plugin": "^4.10.0",
-		"@typescript-eslint/parser": "^4.10.0",
-		"eslint": "^7.15.0",
-		"eslint-config-prettier": "^7.0.0",
-		"eslint-plugin-jsdoc": "^30.7.8",
-		"npm-run-all": "^4.1.5",
-		"onchange": "^7.1.0",
-		"renamer": "^2.0.1",
+		"@types/node": "^14.14.19",
+		"@typescript-eslint/eslint-plugin": "^4.11.1",
+		"@typescript-eslint/parser": "^4.11.1",
+		"eslint": "^7.17.0",
+		"eslint-config-prettier": "^7.1.0",
+		"eslint-plugin-jsdoc": "^30.7.9",
 		"typescript": "^4.1.3"
 	},
-	"main": "dist/ConsoleLocaleTimestamp.mjs",
-	"types": "dist/ConsoleLocaleTimestamp.mjs.d.ts",
+	"main": "dist/ConsoleLocaleTimestamp.js",
+	"types": "dist/ConsoleLocaleTimestamp.d.ts",
 	"scripts": {
-		"_ts-watch:tsc": "tsc -w",
-		"_ts-watch:rename": "onchange -f add -v dist/**/*.mjs.js -- renamer --force --find .mjs.js --replace .mjs dist/**/*",
-		"ts-watch": "run-p _ts-watch:*"
+		"build": "tsc -w"
 	},
 	"repository": {
 		"type": "git",

@@ -182,4 +182,4 @@ export default class ConsoleLocaleTimestamp {
      */
     timeEnd(label?: string): void;
 }
-//# sourceMappingURL=ConsoleLocaleTimestamp.mjs.d.ts.map
+//# sourceMappingURL=ConsoleLocaleTimestamp.d.ts.map
