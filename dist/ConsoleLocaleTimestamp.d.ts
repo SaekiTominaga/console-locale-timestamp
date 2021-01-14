@@ -5,17 +5,17 @@
  * Timestamps are written using `Date.prototype.toLocaleTimeString()`.
  * All public methods have the same functionality as the `Console`<https://console.spec.whatwg.org/>.
  *
- * @version 1.0.4
+ * @version 1.0.8
  */
 export default class ConsoleLocaleTimestamp {
     #private;
     /**
      * @param {string} locales - The specified value will be used as the first argument of `Date.prototype.toLocaleTimeString()`. (e.g. 'en-US' => '12:00:00 AM', 'ja-JP' => '0:00:00' )
-     * @param {object} options - The specified value will be used as the second argument of `Date.prototype.toLocaleTimeString()`. (e.g. { minute: '2-digit', second: '2-digit' } => '00:00')
+     * @param {Intl.DateTimeFormatOptions} options - The specified value will be used as the second argument of `Date.prototype.toLocaleTimeString()`. (e.g. { minute: '2-digit', second: '2-digit' } => '00:00')
      * @param {string[]} quote - The characters that surround the timestamp. If you omit the second value, the same characters as the first are applied. (e.g. [''] => '0:00:00' , ['[', ']'] => '[0:00:00]' )
      * @param {string} separator - Delimiter between the timestamp and the message that follows. (e.g. ' - ' => '0:00:00 - Log message.' )
      */
-    constructor(locales?: string, options?: object, quote?: string[], separator?: string);
+    constructor(locales?: string, options?: Intl.DateTimeFormatOptions, quote?: string[], separator?: string);
     /**
      * Print a timestamp to the console.
      *

@@ -5,12 +5,12 @@
  * Timestamps are written using `Date.prototype.toLocaleTimeString()`.
  * All public methods have the same functionality as the `Console`<https://console.spec.whatwg.org/>.
  *
- * @version 1.0.4
+ * @version 1.0.8
  */
 export default class ConsoleLocaleTimestamp {
     /**
      * @param {string} locales - The specified value will be used as the first argument of `Date.prototype.toLocaleTimeString()`. (e.g. 'en-US' => '12:00:00 AM', 'ja-JP' => '0:00:00' )
-     * @param {object} options - The specified value will be used as the second argument of `Date.prototype.toLocaleTimeString()`. (e.g. { minute: '2-digit', second: '2-digit' } => '00:00')
+     * @param {Intl.DateTimeFormatOptions} options - The specified value will be used as the second argument of `Date.prototype.toLocaleTimeString()`. (e.g. { minute: '2-digit', second: '2-digit' } => '00:00')
      * @param {string[]} quote - The characters that surround the timestamp. If you omit the second value, the same characters as the first are applied. (e.g. [''] => '0:00:00' , ['[', ']'] => '[0:00:00]' )
      * @param {string} separator - Delimiter between the timestamp and the message that follows. (e.g. ' - ' => '0:00:00 - Log message.' )
      */
@@ -22,32 +22,32 @@ export default class ConsoleLocaleTimestamp {
         this.#separator = ' ';
         if (locales !== undefined) {
             if (Object.prototype.toString.call(locales) !== '[object String]') {
-                throw new Error('The argument `locales` must be an String.');
+                throw new TypeError('The argument `locales` must be an String.');
             }
             this.#locales = locales;
         }
         if (options !== undefined) {
             if (Object.prototype.toString.call(options) !== '[object Object]') {
-                throw new Error('The argument `options` must be an Object.');
+                throw new TypeError('The argument `options` must be an Object.');
             }
             this.#options = options;
         }
         if (quote !== undefined) {
             if (Object.prototype.toString.call(quote) !== '[object Array]') {
-                throw new Error('The argument `quote` must be an Array.');
+                throw new TypeError('The argument `quote` must be an Array.');
             }
             else if (quote.length < 1 || quote.length > 2) {
-                throw new Error('The argument `quote` must be an Array of length 1 or 2.');
+                throw new RangeError('The argument `quote` must be an Array of length 1 or 2.');
             }
             else if (!quote.every((val) => Object.prototype.toString.call(val) === '[object String]')) {
-                throw new Error('The contents of the Array of arguments `quote` must be a String.');
+                throw new TypeError('The contents of the Array of arguments `quote` must be a String.');
             }
             this.#openQuote = quote[0];
             this.#closeQuote = quote.length === 1 ? quote[0] : quote[1];
         }
         if (separator !== undefined) {
             if (Object.prototype.toString.call(separator) !== '[object String]') {
-                throw new Error('The argument `separator` must be an String.');
+                throw new TypeError('The argument `separator` must be an String.');
             }
             this.#separator = separator;
         }
