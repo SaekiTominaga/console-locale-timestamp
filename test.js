@@ -1,4 +1,4 @@
-import Console from '../dist/ConsoleLocaleTimestamp.js';
+import Console from './dist/ConsoleLocaleTimestamp.js';
 
 const string = 'Hello World!';
 const object = {
