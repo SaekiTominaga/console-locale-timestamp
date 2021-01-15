@@ -16,6 +16,7 @@
 		"src"
 	],
 	"type": "module",
+	"main": "dist/ConsoleLocaleTimestamp.js",
 	"module": "dist/ConsoleLocaleTimestamp.js",
 	"types": "dist/ConsoleLocaleTimestamp.d.ts",
 	"repository": {
@@ -27,7 +28,7 @@
 		"test": "node test.js"
 	},
 	"devDependencies": {
-		"@types/node": "^14.14.20",
+		"@types/node": "^14.14.21",
 		"@typescript-eslint/eslint-plugin": "^4.13.0",
 		"@typescript-eslint/parser": "^4.13.0",
 		"eslint": "^7.17.0",
