@@ -12,7 +12,8 @@
 	"license": "MIT",
 	"author": "Saeki Tominaga",
 	"files": [
-		"dist"
+		"dist",
+		"src"
 	],
 	"type": "module",
 	"module": "dist/ConsoleLocaleTimestamp.js",

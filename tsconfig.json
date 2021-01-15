@@ -6,6 +6,7 @@
 		"incremental": true,
 		"module": "ESNext",
 		"outDir": "dist/",
+		"sourceMap": true,
 		"target": "ESNext",
 
 		/* Strict Checks */

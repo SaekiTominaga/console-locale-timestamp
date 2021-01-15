@@ -298,3 +298,4 @@ export default class ConsoleLocaleTimestamp {
         console.timeEnd(label);
     }
 }
+//# sourceMappingURL=ConsoleLocaleTimestamp.js.map
