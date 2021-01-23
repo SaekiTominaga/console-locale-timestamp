@@ -10,7 +10,7 @@ All public methods have the same functionality as the [`Console`](https://consol
 
 ### JavaScript
 
-```
+```JavaScript
 import Console from 'console-locale-timestamp';
 
 const console1 = new Console();
@@ -51,7 +51,7 @@ console2.table({
 
 ## Constructor arguments
 
-```
+```TypeScript
 constructor(locales?: string, options?: object, quote?: string[], separator?: string)
 ```
 
