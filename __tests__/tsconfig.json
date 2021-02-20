@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+		/* Project Options */
+		"target": "ES2020",
+
+		/* Module Resolution */
+		"esModuleInterop": true
+	}
+}

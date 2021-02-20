@@ -12,48 +12,6 @@ console1.log(string);
 const console2 = new Console('en-US', { minute: '2-digit', second: '2-digit' }, ['[', ']'], ' - ');
 console2.log(string);
 
-try {
-	const console3 = new Console(1);
-	console3.log(string);
-} catch (e) {
-	console.log(e);
-}
-
-try {
-	const console4 = new Console('en-US', 'hoge');
-	console4.log(string);
-} catch (e) {
-	console.log(e);
-}
-
-try {
-	const console5 = new Console('en-US', { minute: '2-digit', second: '2-digit' }, 'hoge');
-	console5.log(string);
-} catch (e) {
-	console.log(e);
-}
-
-try {
-	const console6 = new Console('en-US', { minute: '2-digit', second: '2-digit' }, ['[', ']', '-']);
-	console6.log(string);
-} catch (e) {
-	console.log(e);
-}
-
-try {
-	const console7 = new Console('en-US', { minute: '2-digit', second: '2-digit' }, [0, 1]);
-	console7.log(string);
-} catch (e) {
-	console.log(e);
-}
-
-try {
-	const console8 = new Console('en-US', { minute: '2-digit', second: '2-digit' }, ['[', ']'], 0);
-	console8.log(string);
-} catch (e) {
-	console.log(e);
-}
-
 const console99 = new Console();
 console.log('--- assert start');
 console99.assert();
