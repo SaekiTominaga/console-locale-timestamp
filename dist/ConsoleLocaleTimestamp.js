@@ -4,8 +4,6 @@
  * Provides a console debugging facilities with a timestamp.
  * Timestamps are written using `Date.prototype.toLocaleTimeString()`.
  * All public methods have the same functionality as the `Console`<https://console.spec.whatwg.org/>.
- *
- * @version 1.0.11
  */
 export default class ConsoleLocaleTimestamp {
     /**
@@ -20,6 +18,12 @@ export default class ConsoleLocaleTimestamp {
         this.#openQuote = '';
         this.#closeQuote = '';
         this.#separator = ' ';
+        this.#LOG_LEVEL = {
+            log: 'log',
+            info: 'info',
+            warn: 'warn',
+            error: 'error',
+        }; // https://console.spec.whatwg.org/#loglevel-severity
         if (locales !== undefined) {
             if (Object.prototype.toString.call(locales) !== '[object String]') {
                 throw new TypeError('The argument `locales` must be an String.');
@@ -57,6 +61,7 @@ export default class ConsoleLocaleTimestamp {
     #openQuote;
     #closeQuote;
     #separator;
+    #LOG_LEVEL; // https://console.spec.whatwg.org/#loglevel-severity
     /**
      * Print a timestamp to the console.
      *
@@ -66,16 +71,19 @@ export default class ConsoleLocaleTimestamp {
     _printTimestamp(logLevel, separator = this.#separator) {
         const timestamp = `${this.#openQuote}${new Date().toLocaleTimeString(this.#locales, this.#options)}${this.#closeQuote}${separator}`;
         switch (logLevel) {
-            case 'log':
-            case 'info':
-            case 'warn':
+            case this.#LOG_LEVEL.log:
+            case this.#LOG_LEVEL.info:
+            case this.#LOG_LEVEL.warn: {
                 process.stdout.write(timestamp);
                 break;
-            case 'error':
+            }
+            case this.#LOG_LEVEL.error: {
                 process.stderr.write(timestamp);
                 break;
-            default:
+            }
+            default: {
                 throw new Error('An undefined `logLevel` was specified as an argument. `logLevel` must be one of the groups defined below. <https://console.spec.whatwg.org/#loglevel-severity>');
+            }
         }
     }
     /**
@@ -96,7 +104,7 @@ export default class ConsoleLocaleTimestamp {
      */
     assert(condition, ...data) {
         if (!condition) {
-            this._printTimestamp('error');
+            this._printTimestamp(this.#LOG_LEVEL.error);
         }
         console.assert(condition, ...data);
     }
@@ -116,7 +124,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.debug() <https://console.spec.whatwg.org/#debug>
      */
     debug(...data) {
-        this._printTimestamp('log');
+        this._printTimestamp(this.#LOG_LEVEL.log);
         console.debug(...data);
     }
     /**
@@ -127,7 +135,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.error() <https://console.spec.whatwg.org/#error>
      */
     error(...data) {
-        this._printTimestamp('error');
+        this._printTimestamp(this.#LOG_LEVEL.error);
         console.error(...data);
     }
     /**
@@ -138,7 +146,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.info() <https://console.spec.whatwg.org/#info>
      */
     info(...data) {
-        this._printTimestamp('info');
+        this._printTimestamp(this.#LOG_LEVEL.info);
         console.info(...data);
     }
     /**
@@ -149,7 +157,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.log() <https://console.spec.whatwg.org/#log>
      */
     log(...data) {
-        this._printTimestamp('log');
+        this._printTimestamp(this.#LOG_LEVEL.log);
         console.log(...data);
     }
     /**
@@ -161,7 +169,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.table() <https://console.spec.whatwg.org/#table>
      */
     table(tabularData, properties) {
-        this._printlnTimestamp('log');
+        this._printlnTimestamp(this.#LOG_LEVEL.log);
         console.table(tabularData, properties);
     }
     /**
@@ -172,7 +180,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.trace() <https://console.spec.whatwg.org/#trace>
      */
     trace(...data) {
-        this._printTimestamp('log');
+        this._printTimestamp(this.#LOG_LEVEL.log);
         console.trace(...data);
     }
     /**
@@ -183,7 +191,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.warn() <https://console.spec.whatwg.org/#warn>
      */
     warn(...data) {
-        this._printTimestamp('warn');
+        this._printTimestamp(this.#LOG_LEVEL.warn);
         console.warn(...data);
     }
     /**
@@ -195,7 +203,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.dir() <https://console.spec.whatwg.org/#dir>
      */
     dir(item, options) {
-        this._printTimestamp('log');
+        this._printTimestamp(this.#LOG_LEVEL.log);
         console.dir(item, options);
     }
     /**
@@ -206,7 +214,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.dirxml() <https://console.spec.whatwg.org/#dirxml>
      */
     dirxml(...data) {
-        this._printTimestamp('log');
+        this._printTimestamp(this.#LOG_LEVEL.log);
         console.dirxml(...data);
     }
     /**
@@ -217,7 +225,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.count() <https://console.spec.whatwg.org/#count>
      */
     count(label) {
-        this._printTimestamp('info');
+        this._printTimestamp(this.#LOG_LEVEL.info);
         console.count(label);
     }
     /**
@@ -233,28 +241,28 @@ export default class ConsoleLocaleTimestamp {
     /**
      * Wrapper of console.group()
      *
-     * @param {any[]} data - Argument of console.group()
+     * @param {any[]} label - Argument of console.group()
      *
      * @see console.group() <https://console.spec.whatwg.org/#group>
      */
-    group(...data) {
-        if (data.length > 0) {
-            this._printTimestamp('log');
+    group(...label) {
+        if (label.length > 0) {
+            this._printTimestamp(this.#LOG_LEVEL.log);
         }
-        console.group(...data);
+        console.group(...label);
     }
     /**
      * Wrapper of console.groupCollapsed()
      *
-     * @param {any[]} data - Argument of console.groupCollapsed()
+     * @param {any[]} label - Argument of console.groupCollapsed()
      *
      * @see console.groupCollapsed() <https://console.spec.whatwg.org/#groupcollapsed>
      */
-    groupCollapsed(...data) {
-        if (data.length > 0) {
-            this._printTimestamp('log');
+    groupCollapsed(...label) {
+        if (label.length > 0) {
+            this._printTimestamp(this.#LOG_LEVEL.log);
         }
-        console.groupCollapsed(...data);
+        console.groupCollapsed(...label);
     }
     /**
      * Wrapper of console.groupEnd()
@@ -283,7 +291,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.timeLog() <https://console.spec.whatwg.org/#timelog>
      */
     timeLog(label, ...data) {
-        this._printTimestamp('log');
+        this._printTimestamp(this.#LOG_LEVEL.log);
         console.timeLog(label, ...data);
     }
     /**
@@ -294,7 +302,7 @@ export default class ConsoleLocaleTimestamp {
      * @see console.timeEnd() <https://console.spec.whatwg.org/#timeend>
      */
     timeEnd(label) {
-        this._printTimestamp('info');
+        this._printTimestamp(this.#LOG_LEVEL.info);
         console.timeEnd(label);
     }
 }

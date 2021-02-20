@@ -4,8 +4,6 @@
  * Provides a console debugging facilities with a timestamp.
  * Timestamps are written using `Date.prototype.toLocaleTimeString()`.
  * All public methods have the same functionality as the `Console`<https://console.spec.whatwg.org/>.
- *
- * @version 1.0.11
  */
 export default class ConsoleLocaleTimestamp {
     #private;
@@ -137,19 +135,19 @@ export default class ConsoleLocaleTimestamp {
     /**
      * Wrapper of console.group()
      *
-     * @param {any[]} data - Argument of console.group()
+     * @param {any[]} label - Argument of console.group()
      *
      * @see console.group() <https://console.spec.whatwg.org/#group>
      */
-    group(...data: any[]): void;
+    group(...label: any[]): void;
     /**
      * Wrapper of console.groupCollapsed()
      *
-     * @param {any[]} data - Argument of console.groupCollapsed()
+     * @param {any[]} label - Argument of console.groupCollapsed()
      *
      * @see console.groupCollapsed() <https://console.spec.whatwg.org/#groupcollapsed>
      */
-    groupCollapsed(...data: any[]): void;
+    groupCollapsed(...label: any[]): void;
     /**
      * Wrapper of console.groupEnd()
      *
