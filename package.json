@@ -24,7 +24,8 @@
 		"url": "git+https://github.com/SaekiTominaga/console-locale-timestamp.git"
 	},
 	"scripts": {
-		"build": "tsc -w",
+		"build": "tsc",
+		"watch": "tsc -w",
 		"sample": "node sample.js",
 		"test": "jest --coverage"
 	},
